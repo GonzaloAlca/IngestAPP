@@ -1,0 +1,1 @@
+Peticiones http o manejo de localstorage, controladores de Peticiones,
