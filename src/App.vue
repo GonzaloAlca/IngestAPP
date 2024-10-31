@@ -1,15 +1,18 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Header from './layaouts/Header.vue';
+import MenuButtons from './common/MenuButtons.vue';
 </script>
 
 <template>
-
+  
+  <MenuButtons />
 
   <div class="app-container d-flex flex-column">
     <Header />
     <div class="content-container flex-grow-1">
       <RouterView />
+      
     </div>
   </div>
 
@@ -30,4 +33,6 @@ import Header from './layaouts/Header.vue';
   background-position: center;
   opacity: 0.2;
 }
+
+
 </style>
