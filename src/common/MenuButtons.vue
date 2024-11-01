@@ -1,13 +1,13 @@
 <template>
-    <button class="btn btn-lg btn-green square-btn d-flex flex-column justify-content-between align-items-center"
-        @click="navigateTo(route)">
-        <div class="icon-container d-flex justify-content-center align-items-center flex-grow-1">
+
+    <Button class="square container rounded-5" @click="navigateTo(route)">
+        <div class="icon-container">
             <i :class="icon" class="icon"></i>
         </div>
         <div class="button-text">
             {{ name }}
         </div>
-    </button>
+    </Button>
 </template>
 
 <script>
@@ -36,41 +36,47 @@ export default {
 </script>
 
 <style scoped>
-.square-btn {
+.square {
     width: 100%;
-    max-width: 500px;
     aspect-ratio: 1;
     position: relative;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     margin: 10px;
-}
-
-.btn-green {
-    background: var(--Menu-Button);
     color: white;
     border: none;
+    background-image: var(--Menu-Button);
+
 }
+
+.square:hover {
+    background: var(--Menu-Button-Hover);
+    color: rgb(56, 56, 56);
+}
+
+
 
 .icon-container {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .icon {
-    font-size: 8rem;
+    font-size: 12rem;
 }
 
 .button-text {
-    font-size: 1.5rem;
+    font-size: 4rem;
     margin-top: 10px;
+    margin-bottom: 15px;
     text-align: center;
     width: 100%;
-    font-weight: bold;
+    font-family: "Inter";
+    font-weight: 600;
 }
 </style>

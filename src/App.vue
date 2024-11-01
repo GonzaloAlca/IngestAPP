@@ -5,16 +5,28 @@ import MenuButtons from './common/MenuButtons.vue';
 </script>
 
 <template>
-  
-  <MenuButtons />
+
+
 
   <div class="app-container d-flex flex-column">
     <Header />
     <div class="content-container flex-grow-1">
       <RouterView />
+
       
+
+
+
+
+
+
+
     </div>
   </div>
+
+
+
+
 
 </template>
 
@@ -33,6 +45,5 @@ import MenuButtons from './common/MenuButtons.vue';
   background-position: center;
   opacity: 0.2;
 }
-
 
 </style>

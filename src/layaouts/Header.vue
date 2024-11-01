@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 .header {
-    background: linear-gradient(to right, #007bff, #507ee2);
+    background: var(--Header-Nav);
     padding: 10px;
     color: white;
 }

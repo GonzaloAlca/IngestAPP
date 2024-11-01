@@ -1,3 +1,6 @@
 :root {
-    --Menu-Button: linear-gradient(to bottom, #3eca3e, #08a84b)
+    --Menu-Button: linear-gradient(to bottom, #A9D300, #7BA600);
+    --Menu-Button-Hover:#80A200;
+    --Header-Nav: linear-gradient(to right, #125D98, #1380D7);
+    
 }
