@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Header from './layaouts/Header.vue';
-import MenuButtons from './common/MenuButtons.vue';
 </script>
 
 <template>
@@ -43,7 +42,6 @@ import MenuButtons from './common/MenuButtons.vue';
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.2;
 }
 
 </style>

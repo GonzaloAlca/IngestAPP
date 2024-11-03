@@ -67,15 +67,15 @@ export default {
 }
 
 .icon {
-    font-size: 12rem;
+    font-size: 6rem;
 }
 
 .button-text {
-    font-size: 4rem;
+    font-size: 1.5rem;
     margin-top: 10px;
     margin-bottom: 15px;
     text-align: center;
-    width: 100%;
+    width: 80%;
     font-family: "Inter";
     font-weight: 600;
 }
