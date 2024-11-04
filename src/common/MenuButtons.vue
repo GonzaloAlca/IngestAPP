@@ -1,13 +1,13 @@
 <template>
 
-    <Button class="square container rounded-5" @click="navigateTo(route)">
+    <button class="square container rounded-5" @click="navigateTo(route)">
         <div class="icon-container">
             <i :class="icon" class="icon"></i>
         </div>
         <div class="button-text">
             {{ name }}
         </div>
-    </Button>
+    </button>
 </template>
 
 <script>
@@ -40,7 +40,7 @@ export default {
     width: 100%;
     aspect-ratio: 1;
     position: relative;
-    padding: 10px;
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,16 +67,16 @@ export default {
 }
 
 .icon {
-    font-size: 6rem;
+    font-size: 7rem;
 }
 
 .button-text {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-top: 10px;
     margin-bottom: 15px;
     text-align: center;
     width: 80%;
     font-family: "Inter";
-    font-weight: 600;
+    font-weight: 800;
 }
 </style>

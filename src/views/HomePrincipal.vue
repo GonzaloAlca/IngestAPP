@@ -20,11 +20,11 @@ export default {
     },
     setup() {
         const buttons = ref([
-            { name: 'Retiro de Herramientas', route: '/retiroherramientas', icon: 'bi bi-arrow-up-right-circle' },
-            { name: 'Devolución de Herramientas', route: '/devolucionherramientas', icon: 'bi bi-arrow-down-left-circle' },
-            { name: 'Menu de Pautas', route: '/menupautas', icon: 'bi bi-journal-text' },
+            { name: 'Retiro', route: '/retiroherramientas', icon: 'bi bi-arrow-up-right-circle' },
+            { name: 'Devolución', route: '/devolucionherramientas', icon: 'bi bi-arrow-down-left-circle' },
+            { name: 'Pautas', route: '/menupautas', icon: 'bi bi-journal-text' },
             { name: 'Administrador de Herramientas', route: '/administradorherramientas', icon: 'bi bi-person-badge' },
-            { name: 'Averias / Reportes', route: '/averias', icon: 'bi bi-tools' },
+            { name: 'Falla / Averías', route: '/averias', icon: 'bi bi-tools' },
             { name: 'Configuración', route: '/configuracion', icon: 'bi bi-gear' },
         ]);
 
