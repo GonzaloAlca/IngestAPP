@@ -22,7 +22,7 @@ export default defineComponent({
     components: { ButtonSlider, BackButton },
     setup() {
         const buttons = ref([
-            { name: 'Memoria Sony SxS', route: '/SonyMemoryTool', icon: 'bi bi-memory' },
+            { name: 'Memoria Sony SxS', route: '/SonyMemoryToolsCheckout', icon: 'bi bi-memory' },
             { name: 'Iphone 13', route: '/iphone-13', icon: 'bi bi-phone' },
             { name: 'Memorias Micro SD', route: '/micro-sd', icon: 'bi bi-sd-card' },
             { name: 'Prueba Oculto', route: '/hidden-test', icon: 'bi bi-eye-slash', hidden: true },

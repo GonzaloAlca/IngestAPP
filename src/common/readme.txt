@@ -1,1 +1,0 @@
-En esta carpeta van componentes comunes que se usaran en otro archivos ejm: botones. Es un modulo que contiene elementos reutilizables en varios lugares.

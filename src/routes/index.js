@@ -3,7 +3,7 @@ import HomePrincipal from "../views/HomePrincipal.vue";
 
 const routes = [
   { path: "/", 
-    name: "Menú Principal", 
+    name: "INGESTA", 
     component: HomePrincipal },
   {
     path: "/retiroherramientas",
@@ -35,6 +35,12 @@ const routes = [
     name: "Configuración",
     component: () => import("../views/UserConfiguration.vue"),
   },
+  {
+    path: "/SonyMemoryToolsCheckout",
+    name: "Retiro Memoria Sony",
+    component: () => import("../views/SonyMemoryToolsCheckout.vue"),
+  },
+
 ];
 
 const router = createRouter({
