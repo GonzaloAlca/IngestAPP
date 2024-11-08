@@ -4,7 +4,6 @@
             <!-- Barra de carga circular -->
             <div v-if="!mostrarExito" class="spinner-border text-danger" role="status"
                 style="width: 5rem; height: 5rem;">
-                <span class="visually-hidden">Cargando...</span>
             </div>
 
             <!-- Ícono de check y mensaje de éxito -->
@@ -23,8 +22,8 @@ import { BModal } from 'bootstrap-vue-next';
 export default defineComponent({
     components: { BModal },
     props: {
-        modelValue: Boolean, // Controla el estado del modal
-        mostrarExito: Boolean, // Controla si mostramos el icono de éxito
+        modelValue: Boolean, 
+        mostrarExito: Boolean, 
     },
     emits: ['update:modelValue'], // Emite cambios de modelValue al componente padre
     setup(props, { emit }) {
