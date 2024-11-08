@@ -44,11 +44,19 @@ export default {
         BFormInput
     },
     setup(props, { emit }) {
-        const password = ref('');
-        const showModal = ref(false);
-        const mostrarCarga = ref(false);
-        const mostrarExito = ref(false);
-        const usuario = ref(props.usuario); // Usamos un ref local para usuario
+        const password = ref(''); // Contraseña
+        const showModal = ref(false); // Modal de confirmación
+        const mostrarCarga = ref(false); // Modal de carga
+        const mostrarExito = ref(false); // Estado de éxito
+
+        // Observador para reiniciar la contraseña al abrir el modal
+        watch(() => showModal.value, (newVal) => {
+            if (newVal) {
+                password.value = ''; // Resetear contraseña cada vez que se abre el modal
+                mostrarCarga.value = false; // Resetear el estado de carga
+                mostrarExito.value = false; // Resetear el estado de éxito
+            }
+        });
 
         // Función para abrir el modal
         const abrirModal = () => {
@@ -64,37 +72,26 @@ export default {
         const confirmar = () => {
             showModal.value = false;
             mostrarCarga.value = true;
+            emit('confirmar'); 
 
             setTimeout(() => {
                 mostrarExito.value = true;
                 setTimeout(() => {
                     mostrarCarga.value = false;
                     mostrarExito.value = false;
-                    emit('operacionExitosa');  // Emitir evento de operación exitosa
-                }, 1000);
-            }, 1000);
+                    emit('mostrarExito', mostrarExito.value);  // Emitir el estado de éxito
+                }, 1500);
+            }, 1500);
         };
-
-
-        // Usar watch para sincronizar el valor de usuario si cambia
-        watch(() => props.usuario, (newUsuario) => {
-            usuario.value = newUsuario;
-        });
-
-        // Emitir el valor actualizado de usuario cuando cambie
-        watch(usuario, (newUsuario) => {
-            emit('update:usuario', newUsuario);
-        });
 
         return {
             password,
             showModal,
             mostrarCarga,
             mostrarExito,
-            abrirModal,
+            abrirModal, // Asegúrate de exponer esta función
             closeModal,
             confirmar,
-            usuario,
         };
     }
 };

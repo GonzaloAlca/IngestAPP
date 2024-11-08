@@ -13,14 +13,13 @@ import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
     props: {
-        modelValue: String, // Valor vinculado desde el padre
-        usuarios: Array,    // Lista de usuarios
+        modelValue: String, 
+        usuarios: Array,    
     },
-    emits: ['update:modelValue'], // Emitir evento para actualizar el valor
+    emits: ['update:modelValue'], 
     setup(props, { emit }) {
         const selectedUser = ref(props.modelValue);
 
-        // Observar los cambios en selectedUser y emitir al padre
         watch(selectedUser, (newValue) => {
             emit('update:modelValue', newValue);
         });

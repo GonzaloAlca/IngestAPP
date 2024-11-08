@@ -17,26 +17,36 @@
 </template>
 
 <script>
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref, watch } from 'vue';
 import { BModal } from 'bootstrap-vue-next';
 
 export default defineComponent({
     components: { BModal },
     props: {
-        modelValue: Boolean,      
-        mostrarExito: Boolean,    
+        modelValue: Boolean, // Controla el estado del modal
+        mostrarExito: Boolean, // Controla si mostramos el icono de éxito
     },
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue'], // Emite cambios de modelValue al componente padre
     setup(props, { emit }) {
         const mostrar = computed({
             get: () => props.modelValue,
-            set: (value) => emit('update:modelValue', value)
+            set: (value) => emit('update:modelValue', value),
+        });
+
+        // Variable para manejar la visualización del éxito
+        const mostrarExito = ref(false);
+
+        // Observamos cambios en mostrarExito y lo actualizamos después de la carga
+        watch(() => props.mostrarExito, (newValue) => {
+            if (newValue) {
+                mostrarExito.value = true;
+            }
         });
 
         return {
             mostrar,
-            mostrarExito: props.mostrarExito
+            mostrarExito,
         };
-    }
+    },
 });
 </script>

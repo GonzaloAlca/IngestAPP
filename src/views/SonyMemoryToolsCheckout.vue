@@ -3,14 +3,14 @@
         <div class="row">
             <!-- Usuario y Herramienta -->
             <div class="col-md-6">
-                <UserSelect v-model="usuario" :usuarios="usuarios" />
-                <ToolInfo :herramienta="herramienta" />
+                <UserSelect v-model="usuario" :usuarios="usuarios" :key="usuarioKey" />
+                <ToolInfo :herramienta="herramienta" :key="herramientaKey" />
             </div>
 
             <!-- Tiempo de Devolución y Código -->
             <div class="col-md-6">
-                <ReturnTime v-model="tiempoDevolucion" />
-                <CodeSelection v-model="selectedCodigos" :codigos="codigos" />
+                <ReturnTime v-model="tiempoDevolucion" :key="tiempoDevolucionKey" />
+                <CodeSelection v-model="selectedCodigos" :codigos="codigos" :key="codigosKey" />
             </div>
         </div>
 
@@ -20,9 +20,13 @@
         <!-- Tabla de herramientas agregadas -->
         <ToolTable :tools="tools" @remove="eliminarHerramienta" />
 
-        <!-- Botones de acciones (Regresar y Enviar) -->
-        <ActionButtons :canSubmit="tools.length > 0" @goBack="regresar" @submit="abrirModal" @resetForm="resetForm"
-            :usuario="usuario" />
+        <div class="action-buttons-container">
+            <div class="action-buttons">
+                <BackButton :route="rutaAnterior" class="btn" />
+                <ConfirmButton :disabled="tools.length === 0" @confirm="abrirModal" class="btn" />
+            </div>
+        </div>
+        <auth-modal ref="authModal" :usuario="usuario" @confirmar="enviarRegistro" @mostrarExito="resetForm" />
     </div>
 </template>
 
@@ -34,8 +38,9 @@ import ReturnTime from '../common/ReturnTime.vue';
 import CodeSelection from '../common/CodeSelection.vue';
 import AddToolButton from '../common/AddToolButton.vue';
 import ToolTable from '../common/ToolTable.vue';
-import ActionButtons from '../layouts/ActionButtons.vue';
 import AuthModal from '../layouts/AuthModal.vue';
+import BackButton from '../common/BackButton.vue';
+import ConfirmButton from '../common/ConfirmButton.vue';
 
 export default {
     components: {
@@ -45,30 +50,36 @@ export default {
         CodeSelection,
         AddToolButton,
         ToolTable,
-        ActionButtons,
         AuthModal,
+        ConfirmButton,
+        BackButton,
     },
     setup() {
         const usuario = ref('');
         const herramienta = ref('Memoria Sony SxS');
-        const tiempoDevolucion = ref(0);
+        const tiempoDevolucion = ref('');
         const selectedCodigos = ref([]);
         const tools = ref([]);
         const usuarios = ref(['Alejandro Vasquez', 'Luis Gomez', 'Maria Perez']);
         const codigos = ref(['C001', 'C002', 'C003', 'C004']);
+        const rutaAnterior = ref('/retiroherramientas');
 
-        // Computed para habilitar/deshabilitar el botón
+        const authModal = ref(null);
+
         const canAddTool = computed(() => {
-            return (
-                usuario.value &&
-                tiempoDevolucion.value > 0 &&
-                selectedCodigos.value.length > 0
-            );
+            return usuario.value && tiempoDevolucion.value && selectedCodigos.value.length > 0;
         });
+
+        // Claves únicas para forzar la re-renderización de los componentes hijos
+        const usuarioKey = ref(0);
+        const herramientaKey = ref(0);
+        const tiempoDevolucionKey = ref(0);
+        const codigosKey = ref(0);
 
         function agregarHerramienta() {
             selectedCodigos.value.forEach((codigo) => {
                 tools.value.push({
+                    usuario: usuario.value,
                     herramienta: herramienta.value,
                     codigo,
                     tiempoDevolucion: tiempoDevolucion.value,
@@ -81,25 +92,29 @@ export default {
             tools.value.splice(index, 1);
         }
 
-        function regresar() {
-            this.$router.push('/Retiro');
-        }
+
 
         function abrirModal() {
-            this.$refs.authModal.abrirModal();
+            authModal.value.abrirModal();
         }
 
         function enviarRegistro() {
             console.log('Registro enviado:', tools.value);
-            mostrarModal.value = false;
+            authModal.value.closeModal();
         }
 
         function resetForm() {
             usuario.value = '';
             herramienta.value = 'Memoria Sony SxS';
-            tiempoDevolucion.value = 0;
+            tiempoDevolucion.value = '';
             selectedCodigos.value = [];
             tools.value = [];
+
+            // Forzar re-renderización de los componentes hijos
+            usuarioKey.value++;
+            herramientaKey.value++;
+            tiempoDevolucionKey.value++;
+            codigosKey.value++;
         }
 
         return {
@@ -113,11 +128,31 @@ export default {
             canAddTool,
             agregarHerramienta,
             eliminarHerramienta,
-            regresar,
             abrirModal,
             enviarRegistro,
             resetForm,
+            authModal,
+            usuarioKey,
+            herramientaKey,
+            tiempoDevolucionKey,
+            codigosKey,
+            rutaAnterior
         };
     },
 };
 </script>
+
+<style>
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+
+}
+
+.btn {
+    margin: 5px;
+
+}
+</style>

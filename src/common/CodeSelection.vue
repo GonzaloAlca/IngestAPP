@@ -1,6 +1,6 @@
 <template>
     <div class="form-group">
-        <label for="codigo" class="font-weight-bold label">Código:</label>
+        <label label-for="codigo" class="font-weight-bold label">Código:</label>
         <div id="codigo" class="row border label-code">
             <div class="col-3" v-for="code in codigos" :key="code">
                 <div class="form-check">

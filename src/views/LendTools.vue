@@ -7,7 +7,7 @@
         <!-- Botón de Retroceso -->
         <div class="row w-100 justify-content-center mt-5">
             <div class="col-4 d-flex justify-content-center">
-                <BackButton />
+                <BackButton :route="rutaAnterior" />
             </div>
         </div>
     </div>
@@ -28,8 +28,11 @@ export default defineComponent({
             { name: 'Prueba Oculto', route: '/hidden-test', icon: 'bi bi-eye-slash', hidden: true },
             { name: 'Nuevo Botón', route: '/new-button', icon: 'bi bi-new-icon' }
         ]);
+        const rutaAnterior = ref('/');
 
-        return { buttons };
+        return { buttons, 
+            rutaAnterior
+        };
     }
 });
 </script>
