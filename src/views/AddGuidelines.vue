@@ -19,7 +19,6 @@
         </div>
 
         <div class="mt-3">
-            <!-- Entrada de Descripción -->
             <DescriptionInput :descripcion="descripcion" @update:descripcion="descripcion = $event" />
         </div>
 
@@ -71,7 +70,7 @@ export default {
     },
     setup() {
         const usuario = ref('');
-        const herramienta = ref('Memoria Sony SxS'); // Valor por defecto de la herramienta
+        const herramienta = ref('Memoria Sony SxS'); 
         const selectedCodigos = ref([]);
         const tools = ref([]);
         const usuarios = ref(['Alejandro Vasquez', 'Luis Gomez', 'Maria Perez']);
@@ -97,7 +96,7 @@ export default {
 
             // Limpiar los inputs después de agregar la pauta
             usuario.value = '';
-            herramienta.value = 'Memoria Sony SxS'; // Restablecer el valor de herramienta
+            herramienta.value = 'Memoria Sony SxS'; 
             selectedCodigos.value = [];
             tema.value = '';
             tcInicio.value = '';
@@ -111,7 +110,7 @@ export default {
 
         return {
             usuario,
-            herramienta, // Aquí mantenemos la reactividad de herramienta
+            herramienta, 
             selectedCodigos,
             tools,
             usuarios,

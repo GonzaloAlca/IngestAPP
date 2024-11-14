@@ -12,20 +12,20 @@
 <script>
 export default {
     props: {
-        modelValue: String, // Esta es la propiedad que recibimos del padre (equivalente al v-model)
+        modelValue: String, 
         herramientas: Array
     },
     data() {
         return {
-            herramientaSeleccionada: this.modelValue // Inicializamos con el valor recibido del padre
+            herramientaSeleccionada: this.modelValue 
         };
     },
     watch: {
         // Cuando se actualiza la selección, emitimos el cambio hacia el padre
         herramientaSeleccionada(newValue) {
-            this.$emit('update:modelValue', newValue); // Emitir el cambio con el nombre correcto para v-model
+            this.$emit('update:modelValue', newValue); 
         },
-        // Si el valor de 'modelValue' cambia desde el padre, actualizamos 'herramientaSeleccionada'
+        // Si el valor de 'modelValue' cambia desde el padre, actualizamos 'herramientaSeleccionada - Esto no se si es necesario'
         modelValue(newValue) {
             this.herramientaSeleccionada = newValue;
         }
