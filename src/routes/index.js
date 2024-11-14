@@ -41,6 +41,18 @@ const routes = [
     component: () => import("../views/SonyMemoryToolsCheckout.vue"),
   },
 
+  {
+    path: "/AddGuidelines",
+    name: "Añadir Pauta",
+    component: () => import("../views/AddGuidelines.vue")
+  },
+
+  {
+    path: "/SeeGuidelines",
+    name: "Ver/Editar Pautas",
+    component: () => import ("../views/SeeGuidelines.vue")
+  }
+
 ];
 
 const router = createRouter({

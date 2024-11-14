@@ -13,15 +13,20 @@ import { defineComponent, ref, watch } from 'vue';
 
 export default defineComponent({
     props: {
-        modelValue: String, 
-        usuarios: Array,    
+        modelValue: String,
+        usuarios: Array,
     },
-    emits: ['update:modelValue'], 
+    emits: ['update:modelValue'],
     setup(props, { emit }) {
         const selectedUser = ref(props.modelValue);
 
         watch(selectedUser, (newValue) => {
             emit('update:modelValue', newValue);
+        });
+
+        // Sincronizar el valor inicial con modelValue
+        watch(() => props.modelValue, (newValue) => {
+            selectedUser.value = newValue;
         });
 
         return { selectedUser };
