@@ -4,11 +4,8 @@
             <!-- Selección de Usuario, Herramienta y Código -->
             <UserSelect class="col-md-4" :modelValue="usuario" :usuarios="usuarios"
                 @update:modelValue="usuario = $event" />
-
-            <!-- ToolName, usando v-model correctamente -->
             <ToolName class="col-md-4" v-model="herramienta" :herramientas="herramientas" />
-
-            <CodeSelection class="col-md-4" :codigo="codigo" :codigos="codigos" @update:codigo="codigo = $event" />
+            <SingleCodeSelection class="col-md-4" v-model="selectedCodigo" :codigos="codigos" />
         </div>
 
         <div class="row mt-3">
@@ -46,11 +43,11 @@
 import { ref } from 'vue';
 import UserSelect from '@/common/UserSelect.vue';
 import ToolName from '@/common/ToolName.vue';
-import CodeSelection from '@/common/CodeSelection.vue';
+import SingleCodeSelection from '@/common/SingleCodeSelection.vue';
 import BackButton from '@/common/BackButton.vue';
 import ConfirmButton from '@/common/ConfirmButton.vue';
 import TitleInput from '@/common/TitleInput.vue';
-import TimeCodeInput from '@/common/TimeCodeInput.vue';
+import TimeCodeInput from '@/common/TimeCodeInput.vue'; // Aquí se importa el nuevo componente
 import DescriptionInput from '@/common/DescriptionInput.vue';
 import AddButton from '@/common/AddButton.vue';
 import GuidelineCard from '@/common/GuidelineCard.vue';
@@ -59,35 +56,34 @@ export default {
     components: {
         UserSelect,
         ToolName,
-        CodeSelection,
+        SingleCodeSelection,
         BackButton,
         ConfirmButton,
         TitleInput,
-        TimeCodeInput,
+        TimeCodeInput, // Registra el componente
         DescriptionInput,
         AddButton,
         GuidelineCard
     },
     setup() {
         const usuario = ref('');
-        const herramienta = ref('Memoria Sony SxS'); 
-        const selectedCodigos = ref([]);
-        const tools = ref([]);
-        const usuarios = ref(['Alejandro Vasquez', 'Luis Gomez', 'Maria Perez']);
-        const codigos = ref(['C001', 'C002', 'C003', 'C004']);
+        const herramienta = ref('Memoria Sony SxS');
+        const selectedCodigo = ref('');
         const pautas = ref([]);
         const tema = ref('');
-        const tcInicio = ref('');
-        const tcFin = ref('');
+        const tcInicio = ref('00:00:00');
+        const tcFin = ref('00:00:00');
         const descripcion = ref('');
         const rutaAnterior = ref('/menupautas');
         const herramientas = ref(['Memoria Sony SxS', 'Iphone 13', 'Micro SD']);
+        const usuarios = ref(['Alejandro Vasquez', 'Luis Gomez', 'Maria Perez']);
+        const codigos = ref(['C001', 'C002', 'C003', 'C004']);
 
         const agregarPauta = () => {
             pautas.value.push({
                 usuario: usuario.value,
                 herramienta: herramienta.value,
-                codigo: selectedCodigos.value,
+                codigo: selectedCodigo.value,
                 tema: tema.value,
                 tcInicio: tcInicio.value,
                 tcFin: tcFin.value,
@@ -96,11 +92,11 @@ export default {
 
             // Limpiar los inputs después de agregar la pauta
             usuario.value = '';
-            herramienta.value = 'Memoria Sony SxS'; 
-            selectedCodigos.value = [];
+            herramienta.value = 'Memoria Sony SxS';
+            selectedCodigo.value = '';
             tema.value = '';
-            tcInicio.value = '';
-            tcFin.value = '';
+            tcInicio.value = '00:00:00';
+            tcFin.value = '00:00:00';
             descripcion.value = '';
         };
 
@@ -110,11 +106,8 @@ export default {
 
         return {
             usuario,
-            herramienta, 
-            selectedCodigos,
-            tools,
-            usuarios,
-            codigos,
+            herramienta,
+            selectedCodigo,
             pautas,
             tema,
             tcInicio,
@@ -124,6 +117,8 @@ export default {
             eliminarPauta,
             herramientas,
             rutaAnterior,
+            usuarios,
+            codigos
         };
     }
 };
