@@ -55,9 +55,8 @@ export default {
         BackButton,
     },
     setup() {
-        // Definir valores reactivos
         const usuario = ref('');
-        const herramienta = ref('Memoria Sony SxS');  // Valor predeterminado
+        const herramienta = ref('Memoria Sony SxS');  
         const tiempoDevolucion = ref('');
         const selectedCodigos = ref([]);
         const tools = ref([]);
@@ -79,7 +78,6 @@ export default {
         const tiempoDevolucionKey = ref(0);
         const codigosKey = ref(0);
 
-        // Función para agregar herramienta
         function agregarHerramienta() {
             selectedCodigos.value.forEach((codigo) => {
                 tools.value.push({
@@ -92,26 +90,22 @@ export default {
             selectedCodigos.value = [];
         }
 
-        // Función para eliminar herramienta
         function eliminarHerramienta(index) {
             tools.value.splice(index, 1);
         }
 
-        // Abrir modal de autenticación
         function abrirModal() {
             authModal.value.abrirModal();
         }
 
-        // Función para enviar el registro
         function enviarRegistro() {
             console.log('Registro enviado:', tools.value);
             authModal.value.closeModal();
         }
 
-        // Resetear el formulario
         function resetForm() {
             usuario.value = '';
-            herramienta.value = 'Memoria Sony SxS';  // Reestablecer la herramienta a valor predeterminado
+            herramienta.value = 'Memoria Sony SxS';  
             tiempoDevolucion.value = '';
             selectedCodigos.value = [];
             tools.value = [];

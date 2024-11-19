@@ -1,49 +1,39 @@
-<!-- PautaCard.vue -->
 <template>
-    <div class="pauta-card">
-        <div>
-            <strong>Tema:</strong> {{ pauta.tema }}
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="card-title"><strong>Tema: </strong>{{ pauta.tema }}</p>
+                <p>
+                    <strong>TC:</strong> <br> IN: {{ pauta.tcInicio }} <br> OUT: {{ pauta.tcFin }}
+                </p>
+            </div>
+
+            <div class="col-md-4">
+                <p class="card-text">
+                    <strong>Descripción:</strong> {{ pauta.descripcion }}
+                </p>
+            </div>
+
+            <div class="col-md-4 d-flex align-items-center justify-content-end">
+                <b-button variant="danger" @click="removePauta(index)">
+                    <i class="bi bi-trash"></i> Eliminar
+                </b-button>
+            </div>
         </div>
-        <div>
-            <strong>Time Code:</strong> IN: {{ pauta.tcInicio }} OUT: {{ pauta.tcFin }}
-        </div>
-        <div>
-            <strong>Descripción:</strong> {{ pauta.descripcion }}
-        </div>
-        <button @click="removePauta" class="remove-button">
-            <i class="fa fa-trash"></i>
-        </button>
     </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
-    pauta: Object
-})
+    pauta: Object,
+    index: Number,
+});
 
-const emit = defineEmits(['removePauta'])
-
-const removePauta = () => {
-    emit('removePauta', pauta)
-}
+// Emite el evento para eliminar la pauta
+const emit = defineEmits(['removePauta']);
+const removePauta = (idx) => {
+    emit('removePauta', idx);
+};
 </script>
-
-<style scoped>
-.pauta-card {
-    display: flex;
-    justify-content: space-between;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.remove-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #d9534f;
-}
-</style>

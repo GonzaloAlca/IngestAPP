@@ -1,8 +1,7 @@
-<!-- AddButton.vue -->
 <template>
-    <button @click="addPauta" class="add-button">
+    <BButton @click="addPauta" class="add-button">
         <i class="fa fa-plus"></i> Agregar pauta
-    </button>
+    </BButton>
 </template>
 
 <script setup>
@@ -17,8 +16,8 @@ const addPauta = () => {
 
 <style scoped>
 .add-button {
-    background-color: #8dc63f;
-    color: #fff;
+    background-image: var(--Menu-Button);
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;

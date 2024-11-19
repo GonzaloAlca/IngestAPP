@@ -25,9 +25,9 @@
         </div>
 
         <!-- Lista de Pautas -->
-        <div class="row mt-4">
-            <div v-for="(pauta, index) in pautas" :key="index" class="col-md-6">
-                <GuidelineCard :pauta="pauta" @removePauta="eliminarPauta" />
+        <div class="row mt-4 contenedor_tarjetas">
+            <div v-for="(pauta, index) in pautas" :key="index" class="col-md-6 mb-3">
+                <GuidelineCard :pauta="pauta" :index="index" @removePauta="eliminarPauta" />
             </div>
         </div>
 
@@ -47,7 +47,7 @@ import SingleCodeSelection from '@/common/SingleCodeSelection.vue';
 import BackButton from '@/common/BackButton.vue';
 import ConfirmButton from '@/common/ConfirmButton.vue';
 import TitleInput from '@/common/TitleInput.vue';
-import TimeCodeInput from '@/common/TimeCodeInput.vue'; // Aquí se importa el nuevo componente
+import TimeCodeInput from '@/common/TimeCodeInput.vue'; 
 import DescriptionInput from '@/common/DescriptionInput.vue';
 import AddButton from '@/common/AddButton.vue';
 import GuidelineCard from '@/common/GuidelineCard.vue';
@@ -60,7 +60,7 @@ export default {
         BackButton,
         ConfirmButton,
         TitleInput,
-        TimeCodeInput, // Registra el componente
+        TimeCodeInput, 
         DescriptionInput,
         AddButton,
         GuidelineCard
@@ -100,9 +100,10 @@ export default {
             descripcion.value = '';
         };
 
-        const eliminarPauta = (pauta) => {
-            pautas.value = pautas.value.filter((p) => p !== pauta);
+        const eliminarPauta = (index) => {
+            pautas.value.splice(index, 1); // Elimina la pauta con base en el índice recibido
         };
+
 
         return {
             usuario,
