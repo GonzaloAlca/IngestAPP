@@ -1,47 +1,30 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Header from './layouts/Header.vue';
+import BackgroundImage from './common/BackgroundImage.vue';
 </script>
 
-<template>
 
 
-
-  <div class="app-container d-flex flex-column">
-    <Header />
-    <div class="content-container flex-grow-1">
-      <RouterView />
-
-      
-
-
-
-
-
-
-
+  <template>
+    <div class="app-container d-flex flex-column">
+      <BackgroundImage /> <!-- Usar el componente de fondo -->
+      <Header />
+      <div class="content-container flex-grow-1">
+        <RouterView />
+      </div>
     </div>
-  </div>
+  </template>
 
+  <style scoped>
+    .app-container {
+      position: relative;
+      height: 100vh;
+    }
 
-
-
-
-</template>
-
-<style scoped>
-.app-container {
-  height: 100vh;
-
-}
-
-.content-container {
-  display: flex;
-  flex-direction: column;
-  background-image: url(assets/bg-ingestapp.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-</style>
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      z-index: 1;
+    }
+  </style>

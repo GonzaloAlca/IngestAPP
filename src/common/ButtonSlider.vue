@@ -66,7 +66,6 @@ export default defineComponent({
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background:var(--Menu-Button);
     border: none;
 }
 

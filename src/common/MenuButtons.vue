@@ -1,13 +1,13 @@
 <template>
 
-    <button class="square container rounded-5" @click="navigateTo(route)">
+    <BButton class="btn-primary square container rounded-5" @click="navigateTo(route)">
         <div class="icon-container">
             <i :class="icon" class="icon"></i>
         </div>
         <div class="button-text">
             {{ name }}
         </div>
-    </button>
+    </BButton>
 </template>
 
 <script>
@@ -47,14 +47,9 @@ export default {
     margin: 10px;
     color: white;
     border: none;
-    background-image: var(--Menu-Button);
 
 }
 
-.square:hover {
-    background: var(--Menu-Button-Hover);
-    color: rgb(56, 56, 56);
-}
 
 
 

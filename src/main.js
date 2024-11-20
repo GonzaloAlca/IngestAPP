@@ -10,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./assets/styles/variables.css"
+import "./assets/styles/styles.css"
+
 
 const app = createApp(App);
 
