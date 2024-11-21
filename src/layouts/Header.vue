@@ -1,13 +1,11 @@
 <template>
     <b-navbar class="header">
         <b-navbar-nav>
-            <button class="btn btn-link text-white" @click="toggleMenu">
-                <i class="bi bi-list" style="font-size: 2.5rem; color: white;"></i> <!-- Icono de menú hamburguesa -->
-            </button>
+            <HamburgerMenu /> <!-- Menú hamburguesa aquí -->
 
             <!-- Icono de Home temporal para poder regresar durante el desarrollo -->
             <router-link to="/" class="navbar-brand">
-                <i class="bi bi-shop" style="font-size: 2.5rem; color: white;"></i> 
+                <i class="bi bi-shop" style="font-size: 2.5rem; color: white;"></i>
             </router-link>
 
             <span class="page-title text-white ml-3">{{ currentPage }}</span> <!-- Nombre de la página -->
@@ -22,25 +20,23 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import HamburgerMenu from './HamburgerMenu.vue';
 
 export default {
     name: 'Header',
+    components: {
+        HamburgerMenu
+    },
     setup() {
         const route = useRoute();
-
         const currentPage = computed(() => {
             return route.name || 'Página Desconocida';
         });
 
-        const toggleMenu = () => {
-            console.log('Menú hamburguesa clicado');
-        };
-
         return {
-            currentPage,
-            toggleMenu
+            currentPage
         };
     }
 };
