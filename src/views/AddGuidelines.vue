@@ -90,7 +90,6 @@ export default {
                 descripcion: descripcion.value
             });
 
-            // Limpiar los inputs después de agregar la pauta
             usuario.value = '';
             herramienta.value = 'Memoria Sony SxS';
             selectedCodigo.value = '';

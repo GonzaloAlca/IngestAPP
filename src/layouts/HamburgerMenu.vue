@@ -20,7 +20,6 @@
             </div>
             <hr>
             <ul class="menu-list">
-                <!-- Enlaces con router-link -->
                 <li><router-link to="/" class="text-white" @click="closeOffcanvas"><i class="bi bi-house-door"></i>
                         Inicio</router-link></li>
                 <li><router-link to="/retiroherramientas" class="text-white" @click="closeOffcanvas"><i
@@ -46,12 +45,10 @@ export default {
     setup() {
         const isOffcanvasVisible = ref(false);
 
-        // Muestra el offcanvas
         const toggleOffcanvas = () => {
             isOffcanvasVisible.value = !isOffcanvasVisible.value;
         };
 
-        // Cierra el offcanvas
         const closeOffcanvas = () => {
             isOffcanvasVisible.value = false;
         };
@@ -66,7 +63,6 @@ export default {
 </script>
 
 <style scoped>
-/* Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -74,22 +70,17 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* Fondo semitransparente */
     z-index: 1040;
-    /* Justo debajo del menú */
     opacity: 0;
     pointer-events: none;
-    /* Asegura que el overlay no interfiere con el menú si no está visible */
     transition: opacity 0.3s ease-in-out;
 }
 
-/* Cuando el menú es visible, hacemos visible el overlay */
 .overlay.visible {
     opacity: 1;
     pointer-events: all;
 }
 
-/* Menú lateral (offcanvas) */
 .offcanvas-menu {
     position: fixed;
     top: 0;
@@ -104,12 +95,10 @@ export default {
     padding: 1rem;
 }
 
-/* Menú visible */
 .offcanvas-visible {
     left: 0;
 }
 
-/* Estilos del encabezado del menú */
 .offcanvas-header {
     display: flex;
     justify-content: space-between;
@@ -122,7 +111,6 @@ export default {
     margin-right: 0.5rem;
 }
 
-/* Estilos para los enlaces del menú */
 .menu-list {
     list-style: none;
     padding: 0;
@@ -143,7 +131,6 @@ export default {
     color: #ffd700;
 }
 
-/* Elimina el subrayado en los enlaces */
 a {
     text-decoration: none;
 }

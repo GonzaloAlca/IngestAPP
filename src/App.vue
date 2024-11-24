@@ -8,7 +8,7 @@ import BackgroundImage from './common/BackgroundImage.vue';
 
   <template>
     <div class="app-container d-flex flex-column">
-      <BackgroundImage /> <!-- Usar el componente de fondo -->
+      <BackgroundImage /> 
       <Header />
       <div class="content-container flex-grow-1">
         <RouterView />
