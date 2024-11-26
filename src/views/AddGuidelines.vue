@@ -21,7 +21,7 @@
 
         <!-- Botón para agregar pautas -->
         <div class="text-center mt-3">
-            <AddButton @addPauta="agregarPauta" />
+            <AddButton @addPauta="agregarPauta" :disabled="!camposLlenos"  />
         </div>
 
         <!-- Lista de Pautas -->
@@ -34,13 +34,13 @@
         <!-- Botones de Confirmación y Regreso -->
         <div class="text-center mt-4">
             <BackButton :route="rutaAnterior" />
-            <ConfirmButton />
+            <ConfirmButton @click="enviarPautas" :disabled="pautas.length === 0" />
         </div>
     </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import UserSelect from '@/common/UserSelect.vue';
 import ToolName from '@/common/ToolName.vue';
 import SingleCodeSelection from '@/common/SingleCodeSelection.vue';
@@ -79,6 +79,23 @@ export default {
         const usuarios = ref(['Alejandro Vasquez', 'Luis Gomez', 'Maria Perez']);
         const codigos = ref(['C001', 'C002', 'C003', 'C004']);
 
+
+        const camposLlenos = computed(() => {
+            return (
+                usuario.value &&
+                herramienta.value &&
+                selectedCodigo.value &&
+                tema.value &&
+                tcInicio.value &&
+                tcFin.value &&
+                descripcion.value
+            );
+        });
+
+
+
+
+
         const agregarPauta = () => {
             pautas.value.push({
                 usuario: usuario.value,
@@ -104,6 +121,30 @@ export default {
         };
 
 
+
+        const enviarPautas = async () => {
+            try {
+                const response = await fetch('https://api.provisional', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(pautas.value)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al enviar pautas');
+                }
+
+                const data = await response.json();
+                console.log('Pautas enviadas exitosamente:', data);
+
+                pautas.value = [];
+            } catch (error) {
+                console.error('Hubo un problema al enviar las pautas:', error);
+            }
+        };
+
         return {
             usuario,
             herramienta,
@@ -118,7 +159,9 @@ export default {
             herramientas,
             rutaAnterior,
             usuarios,
-            codigos
+            codigos,
+            camposLlenos,
+            enviarPautas
         };
     }
 };
