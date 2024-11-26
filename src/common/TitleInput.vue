@@ -3,9 +3,8 @@
         <label for="tema">Tema</label>
         <b-form-input
             id="tema"
-            :value="tema"
+            v-model="temaLocal"
             placeholder="Tema 1"
-            @input="$emit('update:tema', $event.target.value)"
         />
     </div>
 </template>
@@ -13,9 +12,20 @@
 <script>
 export default {
     props: {
-        tema: {
+        modelValue: {
             type: String,
             default: ''
+        }
+    },
+    emits: ['update:modelValue'],
+    computed: {
+        temaLocal: {
+            get() {
+                return this.modelValue;
+            },
+            set(value) {
+                this.$emit('update:modelValue', value);
+            }
         }
     }
 };

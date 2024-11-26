@@ -3,10 +3,9 @@
         <label for="descripcion">Descripción</label>
         <b-form-textarea
             id="descripcion"
-            :value="descripcion"
+            v-model="descripcionLocal"
             placeholder="Ingrese la descripción"
             rows="3"
-            @input="$emit('update:descripcion', $event.target.value)"
         />
     </div>
 </template>
@@ -14,10 +13,21 @@
 <script>
 export default {
     props: {
-        descripcion: {
+        modelValue: {
             type: String,
-            default: ''
-        }
-    }
+            default: '',
+        },
+    },
+    emits: ['update:modelValue'],
+    computed: {
+        descripcionLocal: {
+            get() {
+                return this.modelValue;
+            },
+            set(value) {
+                this.$emit('update:modelValue', value);
+            },
+        },
+    },
 };
 </script>

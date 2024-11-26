@@ -28,12 +28,14 @@ export default defineComponent({
         },
         tc: {
             type: String,
+            default: '00:00:00',
             required: true
         }
     },
     setup(props, { emit }) {
 
-        const [hours, minutes, seconds] = props.tc.split(':').map(val => val || '00');
+
+        const [hours, minutes, seconds] = (props.tc || '00:00:00').split(':').map(val => val || '00');
 
         const hour = ref(hours);
         const minute = ref(minutes);
