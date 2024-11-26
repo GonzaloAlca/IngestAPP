@@ -1,8 +1,8 @@
 <!-- ConfirmButton.vue -->
 <template>
-    <button class="btn btn-success" :disabled="disabled" @click="confirmAction">
+    <bbutton class="btn btn-success" :disabled="disabled" @click="confirmAction">
         Enviar Registro
-    </button>
+    </bbutton>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <BButton @click="addPauta" class="add-button">
+    <BButton  @click="addPauta" class="btn btn-success">
         <i class="fa fa-plus"></i> Agregar pauta
     </BButton>
 </template>
@@ -15,11 +15,5 @@ const addPauta = () => {
 </script>
 
 <style scoped>
-.add-button {
-    background-image: var(--Menu-Button);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 </style>
