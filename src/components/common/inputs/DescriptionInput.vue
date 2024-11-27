@@ -1,12 +1,8 @@
 <template>
     <div class="form-group">
         <label for="descripcion">Descripción</label>
-        <b-form-textarea
-            id="descripcion"
-            v-model="descripcionLocal"
-            placeholder="Ingrese la descripción"
-            rows="3"
-        />
+        <b-form-textarea id="descripcion" v-model="descripcionLocal" placeholder="Ingrese la descripción" rows="3"
+            class="no-resize" />
     </div>
 </template>
 
@@ -31,3 +27,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.no-resize {
+    resize: none;
+}
+</style>

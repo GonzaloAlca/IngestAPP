@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import ButtonSlider from '../common/ButtonSlider.vue';
-import BackButton from '../common/BackButton.vue';
+import ButtonSlider from '@/components/common/buttons/ButtonSlider.vue';
+import BackButton from '@/components/common/buttons/BackButton.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({

@@ -1,4 +1,3 @@
-<!-- ConfirmButton.vue -->
 <template>
     <BButton class="btn btn-success" :disabled="disabled" @click="confirmAction">
         Enviar Registro

@@ -12,7 +12,7 @@
         <!-- Menú lateral (offcanvas) -->
         <div class="offcanvas-menu" :class="{ 'offcanvas-visible': isOffcanvasVisible }" @click.self="closeOffcanvas">
             <div class="offcanvas-header">
-                <i class="bi bi-caret-right-fill" style="font-size: 1.5rem;"></i> <!-- Icono agregado -->
+                <i class="bi bi-caret-right-fill" style="font-size: 1.5rem;"></i> 
                 <span class="text-white h4" style="margin: 0;">INGESTA</span>
                 <button class="btn btn-link text-white p-0" @click="closeOffcanvas">
                     <i class="bi bi-x-lg" style="font-size: 1.5rem;"></i>
@@ -22,16 +22,17 @@
             <ul class="menu-list">
                 <li><router-link to="/" class="text-white" @click="closeOffcanvas"><i class="bi bi-house-door"></i>
                         Inicio</router-link></li>
+                        <hr>
                 <li><router-link to="/retiroherramientas" class="text-white" @click="closeOffcanvas"><i
-                            class="bi bi-box-arrow-in-right"></i> Retiro</router-link></li>
+                            class="bi bi-box-arrow-in-right"></i> Retiro</router-link></li><hr>
                 <li><router-link to="/devolucionherramientas" class="text-white" @click="closeOffcanvas"><i
-                            class="bi bi-box-arrow-in-left"></i> Devolución</router-link></li>
+                            class="bi bi-box-arrow-in-left"></i> Devolución</router-link></li><hr>
                 <li><router-link to="/menupautas" class="text-white" @click="closeOffcanvas"><i
-                            class="bi bi-card-checklist"></i> Pautas</router-link></li>
+                            class="bi bi-card-checklist"></i> Pautas</router-link></li><hr>
                 <li><router-link to="/averias" class="text-white" @click="closeOffcanvas"><i class="bi bi-tools"></i>
-                        Falla/Avería</router-link></li>
+                        Falla/Avería</router-link></li><hr>
                 <li><router-link to="/configuracion" class="text-white" @click="closeOffcanvas"><i
-                            class="bi bi-gear"></i> Configuración</router-link></li>
+                            class="bi bi-gear"></i> Configuración</router-link></li><hr>
             </ul>
         </div>
     </div>
@@ -85,10 +86,9 @@ export default {
     position: fixed;
     top: 0;
     left: -100%;
-    width: 250px;
+    width: 300px;
     height: 100%;
     background: var(--Header-Nav);
-    color: white;
     transition: left 0.3s ease-in-out;
     z-index: 1050;
     overflow-y: auto;
@@ -113,7 +113,7 @@ export default {
 
 .menu-list {
     list-style: none;
-    padding: 0;
+    padding: 0 20px;
 }
 
 .menu-list li {
@@ -122,6 +122,7 @@ export default {
     font-size: 1.5rem;
     padding: 0.5rem 0;
 }
+
 
 .menu-list li i {
     margin-right: 1rem;

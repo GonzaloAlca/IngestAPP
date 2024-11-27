@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import GuidelineCard from '@/common/GuidelineCard.vue';
+import GuidelineCard from '@/components/common/GuidelineCard.vue';
 
 export default {
     props: {

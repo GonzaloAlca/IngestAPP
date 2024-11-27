@@ -32,15 +32,15 @@
 
 <script>
 import { ref, computed } from 'vue';
-import UserSelect from '../common/UserSelect.vue';
-import ReturnTime from '../common/ReturnTime.vue';
-import CodeSelection from '../common/CodeSelection.vue';
-import AddToolButton from '../common/AddToolButton.vue';
-import ToolTable from '../common/ToolTable.vue';
-import AuthModal from '../layouts/AuthModal.vue';
-import BackButton from '../common/BackButton.vue';
-import ConfirmButton from '../common/ConfirmButton.vue';
-import ToolName from '../common/ToolName.vue';
+import UserSelect from '@/components/common/selects/UserSelect.vue';
+import ReturnTime from '@/components/common/inputs/ReturnTime.vue';
+import CodeSelection from '@/components/common/selects/CodeSelection.vue';
+import AddToolButton from '@/components/common/buttons/AddToolButton.vue';
+import ToolTable from '@/components/common/ToolTable.vue';
+import AuthModal from '@/components/layouts/AuthModal.vue';
+import BackButton from '@/components/common/buttons/BackButton.vue';
+import ConfirmButton from '@/components/common/buttons/ConfirmButton.vue';
+import ToolName from '@/components/common/selects/ToolName.vue';
 
 export default {
     components: {

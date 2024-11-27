@@ -12,16 +12,14 @@ import { defineComponent, ref, watch } from 'vue';
 export default defineComponent({
     props: {
         modelValue: {
-            type: String, // Usamos String para almacenar la hora
+            type: String, 
             required: true,
         },
     },
     emits: ['update:modelValue'],
     setup(props, { emit }) {
 
-        // Valor por defecto de '00:00'
-        const tiempoDevolucion = ref(props.modelValue || '00:00');  // Establecer valor predeterminado
-
+        const tiempoDevolucion = ref(props.modelValue || '00:00');  
         watch(tiempoDevolucion, (newValue) => {
             emit('update:modelValue', newValue);
         });
@@ -30,3 +28,4 @@ export default defineComponent({
     },
 });
 </script>
+

@@ -1,7 +1,7 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Header from './layouts/Header.vue';
-import BackgroundImage from './common/BackgroundImage.vue';
+import { RouterView } from 'vue-router'
+import Header from '@/components/layouts/Header.vue';
+import BackgroundImage from '@/components/common/BackgroundImage.vue';
 </script>
 
 

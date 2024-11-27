@@ -24,7 +24,6 @@ export default defineComponent({
             emit('update:modelValue', newValue);
         });
 
-        // Sincronizar el valor inicial con modelValue
         watch(() => props.modelValue, (newValue) => {
             selectedUser.value = newValue;
         });

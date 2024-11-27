@@ -2,7 +2,7 @@
     <div class="background" />
 </template>
 
-<script setup>
+<script >
 </script>
 
 <style scoped>
@@ -12,7 +12,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('@/assets/bg-ingestapp.jpg');
+    background-image: url('@/assets/images/bg-ingestapp.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

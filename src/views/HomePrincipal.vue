@@ -12,7 +12,7 @@
 
 <script>
 import { ref } from 'vue';
-import Menubuttons from '@/common/MenuButtons.vue';
+import Menubuttons from '@/components/common/buttons/MenuButtons.vue';
 
 export default {
     components: {

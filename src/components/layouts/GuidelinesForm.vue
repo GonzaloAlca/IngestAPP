@@ -7,9 +7,10 @@
         </div>
 
         <div class="row mt-3">
-            <TitleInput v-model="formFields.tema" class="col-md-4"/>
-            <TimeCodeInput class="col-md-4" v-model="formFields.tcInicio" :tc="formFields.tcInicio" label="Tc. Inicio" />
-            <TimeCodeInput class="col-md-4" v-model="formFields.tcFin" :tc="formFields.tcFin" label="Tc. Fin" />
+            <TitleInput v-model="formFields.tema" class="col-md-4" />
+
+            <TimeCodeInput class="col-md-4" v-model="formFields.tcInicio" label="Tc. Inicio" />
+            <TimeCodeInput class="col-md-4" v-model="formFields.tcFin" label="Tc. Fin" />
         </div>
 
         <div class="mt-3">
@@ -25,13 +26,13 @@
 
 <script>
 import { ref, computed } from 'vue';
-import UserSelect from '@/common/UserSelect.vue';
-import ToolName from '@/common/ToolName.vue';
-import SingleCodeSelection from '@/common/SingleCodeSelection.vue';
-import TitleInput from '@/common/TitleInput.vue';
-import TimeCodeInput from '@/common/TimeCodeInput.vue';
-import DescriptionInput from '@/common/DescriptionInput.vue';
-import AddButton from '@/common/AddButton.vue';
+import UserSelect from '@/components/common/selects/UserSelect.vue';
+import ToolName from '@/components/common/selects/ToolName.vue';
+import SingleCodeSelection from '@/components/common/selects/SingleCodeSelection.vue';
+import TitleInput from '@/components/common/inputs/TitleInput.vue';
+import TimeCodeInput from '@/components/common/inputs/TimeCodeInput.vue';
+import DescriptionInput from '@/components/common/inputs/DescriptionInput.vue';
+import AddButton from '@/components/common/buttons/AddButton.vue';
 
 export default {
     components: {
@@ -67,6 +68,7 @@ export default {
 
         const emitirPauta = () => {
             emit('addPauta', { ...formFields.value });
+            console.log(formFields.value)
             resetFields();
         };
 

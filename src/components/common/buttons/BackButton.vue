@@ -4,21 +4,20 @@
 
 <script>
 import { useRouter } from 'vue-router';
-import { defineComponent, defineProps } from 'vue';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     props: {
         route: {
             type: String,
-            required: true, // Aseguramos que 'route' sea una propiedad obligatoria
+            required: true, 
         },
     },
     setup(props) {
         const router = useRouter();
 
         const goBack = () => {
-            // Accediendo correctamente a 'props.route' en la función
-            router.push(props.route); // Redirige a la ruta proporcionada
+            router.push(props.route); 
         };
 
         return { goBack };

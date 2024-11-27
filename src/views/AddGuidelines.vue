@@ -16,10 +16,10 @@
 
 <script>
 import { ref } from 'vue';
-import GuidelinesForm from '@/layouts/GuidelinesForm.vue';
-import GuidelinesList from '@/layouts/GuidelinesList.vue';
-import BackButton from '@/common/BackButton.vue';
-import ConfirmButton from '@/common/ConfirmButton.vue';
+import GuidelinesForm from '@/components/layouts/GuidelinesForm.vue';
+import GuidelinesList from '@/components/layouts/GuidelinesList.vue';
+import BackButton from '@/components/common/buttons/BackButton.vue';
+import ConfirmButton from '@/components/common/buttons/ConfirmButton.vue';
 
 export default {
     components: {
@@ -46,7 +46,8 @@ export default {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(pautas.value),
-                });
+                    
+                });            
 
                 if (!response.ok) throw new Error('Error al enviar pautas');
                 console.log('Pautas enviadas exitosamente');
