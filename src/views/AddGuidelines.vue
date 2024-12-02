@@ -7,9 +7,11 @@
         <GuidelinesList :pautas="pautas" @removePauta="eliminarPauta" />
 
         <!-- Botones de Confirmación y Regreso -->
-        <div class="text-center mt-4">
-            <BackButton :route="rutaAnterior" />
-            <ConfirmButton @click="enviarPautas" :disabled="pautas.length === 0" />
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-center">
+                <BackButton class="mx-2" :route="rutaAnterior" />
+                <ConfirmButton @click="enviarPautas" :disabled="pautas.length === 0" />
+            </div>
         </div>
     </div>
 </template>
@@ -46,8 +48,8 @@ export default {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(pautas.value),
-                    
-                });            
+
+                });
 
                 if (!response.ok) throw new Error('Error al enviar pautas');
                 console.log('Pautas enviadas exitosamente');

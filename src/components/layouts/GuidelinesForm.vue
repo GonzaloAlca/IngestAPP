@@ -19,7 +19,7 @@
 
         <!-- Botón para agregar pautas -->
         <div class="text-center mt-3">
-            <AddButton @click="emitirPauta" :disabled="!camposLlenos" />
+            <AddButton @click="emitirPauta" :disabled="!camposLlenos"  label="Agregar pauta" />
         </div>
     </div>
 </template>

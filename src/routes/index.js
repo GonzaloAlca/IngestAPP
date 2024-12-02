@@ -51,6 +51,16 @@ const routes = [
     path: "/SeeGuidelines",
     name: "Ver/Editar Pautas",
     component: () => import ("../views/SeeGuidelines.vue")
+  },
+  {
+    path: "/AddReport",
+    name: "Agregar Reporte",
+    component: () => import ("../views/AddReport.vue")
+  },
+  {
+    path: "/SeeReport",
+    name: "Ver Reportes",
+    component: () => import ("../views/SeeReport.vue")
   }
 
 ];
