@@ -61,6 +61,11 @@ const routes = [
     path: "/SeeReport",
     name: "Ver Reportes",
     component: () => import ("../views/SeeReport.vue")
+  },
+  {
+    path: "/ReportMenu",
+    name: "Fallas/Averias",
+    component: () => import ("../views/ReportMenu.vue")
   }
 
 ];

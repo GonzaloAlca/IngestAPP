@@ -27,6 +27,18 @@
                 <AddButton label="Agregar reporte" :disabled="!canSubmit" @addPauta="guardarReporte" />
             </div>
         </div>
+
+        <!-- Modales -->
+        <LoadModal 
+            :modelValue="mostrarCargando" 
+            :mostrarExito="mostrarExito" 
+            @update:modelValue="mostrarCargando = $event" 
+        />
+        <ErrorModal 
+            :modelValue="mostrarError" 
+            :mensaje="mensajeError" 
+            @update:modelValue="mostrarError = $event" 
+        />
     </div>
 </template>
 
@@ -38,6 +50,8 @@ import SingleCodeSelection from '@/components/common/selects/SingleCodeSelection
 import DescriptionInput from '@/components/common/inputs/DescriptionInput.vue';
 import BackButton from '@/components/common/buttons/BackButton.vue';
 import AddButton from '@/components/common/buttons/AddButton.vue';
+import LoadModal from '@/components/layouts/LoadModal.vue'; // Importamos el LoadModal
+import ErrorModal from '@/components/layouts/ErrorModal.vue'; // Importamos el ErrorModal
 
 export default {
     components: {
@@ -47,6 +61,8 @@ export default {
         DescriptionInput,
         BackButton,
         AddButton,
+        LoadModal, // Registramos el LoadModal
+        ErrorModal, // Registramos el ErrorModal
     },
     setup() {
         const usuario = ref('');
@@ -58,7 +74,7 @@ export default {
         const herramientas = ref(['Herramienta A', 'Herramienta B', 'Herramienta C']);
         const codigos = ref(['Código X', 'Código Y', 'Código Z']);
 
-        const rutaAnterior = ref('/home');
+        const rutaAnterior = ref('/ReportMenu');
 
         const canSubmit = computed(() => {
             return (
@@ -69,13 +85,54 @@ export default {
             );
         });
 
-        const guardarReporte = () => {
-            console.log('Reporte guardado:', {
+        // Variables para los modales
+        const mostrarCargando = ref(false);
+        const mostrarExito = ref(false);
+        const mostrarError = ref(false);
+        const mensajeError = ref('');
+
+        // Función para simular la guardado del reporte con fetch
+        const guardarReporte = async () => {
+            mostrarCargando.value = true;
+            mostrarExito.value = false;
+            mostrarError.value = false;
+
+            const reporteData = {
                 usuario: usuario.value,
                 herramienta: herramienta.value,
                 codigo: codigoSeleccionado.value,
                 descripcion: descripcion.value,
-            });
+            };
+
+            try {
+                // Simulación de llamada API con fetch
+                const response = await fetch('https://api.example.com/guardar-reporte', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(reporteData),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor');
+                }
+
+                mostrarCargando.value = false;
+                mostrarExito.value = true; 
+
+                setTimeout(() => {
+                    mostrarExito.value = false;
+                }, 2000);
+            } catch (error) {
+                mostrarCargando.value = false;
+                mensajeError.value = 'Error al guardar el reporte. Inténtalo nuevamente.';
+                mostrarError.value = true; 
+
+                setTimeout(() => {
+                    mostrarError.value = false;
+                }, 2000);
+            }
         };
 
         return {
@@ -88,15 +145,17 @@ export default {
             codigos,
             rutaAnterior,
             canSubmit,
-            guardarReporte, 
+            guardarReporte,
+            mostrarCargando,
+            mostrarExito,
+            mostrarError,
+            mensajeError,
         };
     },
 };
 </script>
 
 <style scoped>
-
-
 .row {
     margin-bottom: 1rem;
 }
