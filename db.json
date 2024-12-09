@@ -1,3 +1,4 @@
 {
-    "_comment": "simulacion de backend para probar el uso de Pinia"
+    "_comment": "simulacion de backend para probar el uso de Pinia",
+    "_comment2": "Comando para inicializar: json-server --watch db.json --port 3000"
 }
